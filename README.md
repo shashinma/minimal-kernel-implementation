@@ -24,8 +24,17 @@ qemu –fda bootsect.bin –fdb kernel.bin
 ```md
 cl.exe /GS- /c kernel.cpp
 ```
+
 ```md
 link.exe /OUT:kernel.bin /BASE:0x10000 /FIXED /FILEALIGN:512 /MERGE:.rdata=.data /IGNORE:4254 /NODEFAULTLIB /ENTRY:kmain /SUBSYSTEM:NATIVE kernel.obj
+```
+
+```md
+dumpbin /headers kernel.bin
+```
+
+```md
+qemu –fda bootsect.bin –fdb kernel.bin
 ```
 
 ##### For successful compilation, assembler inserts in the program code in C must be written using Intel syntax:
